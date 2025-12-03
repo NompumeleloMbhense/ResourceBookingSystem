@@ -1,5 +1,6 @@
 ﻿bin/
 obj/
+# Visual Studio working directory
 .vs/
 *.user
 *.suo
