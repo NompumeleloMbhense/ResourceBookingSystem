@@ -1,0 +1,10 @@
+﻿bin/
+obj/
+.vs/
+*.user
+*.suo
+*.db
+*.bak
+appsettings.Development.json
+*.log
+Properties/launchSettings.json

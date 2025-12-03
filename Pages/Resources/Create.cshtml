@@ -1,0 +1,54 @@
+﻿@page
+@model ResourceBookingSystem.Pages.Resources.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Resource</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Resource.Name" class="control-label"></label>
+                <input asp-for="Resource.Name" class="form-control" />
+                <span asp-validation-for="Resource.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.Description" class="control-label"></label>
+                <input asp-for="Resource.Description" class="form-control" />
+                <span asp-validation-for="Resource.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.Location" class="control-label"></label>
+                <input asp-for="Resource.Location" class="form-control" />
+                <span asp-validation-for="Resource.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resource.Capacity" class="control-label"></label>
+                <input asp-for="Resource.Capacity" class="form-control" />
+                <span asp-validation-for="Resource.Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Resource.IsAvailable" /> @Html.DisplayNameFor(model => model.Resource.IsAvailable)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
