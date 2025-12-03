@@ -12,14 +12,14 @@ namespace ResourceBookingSystem.Pages.Resources
 {
     public class DetailsModel : PageModel
     {
-        private readonly ResourceBookingSystem.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(ResourceBookingSystem.Data.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public Resource Resource { get; set; } = default!;
+        public Resource? Resource { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,15 +28,21 @@ namespace ResourceBookingSystem.Pages.Resources
                 return NotFound();
             }
 
-            var resource = await _context.Resources.FirstOrDefaultAsync(m => m.Id == id);
-            if (resource == null)
+            // Load the resource and include its related bookings
+            Resource = await _context.Resources
+                .Include(r => r.Bookings) // Load related bookings
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Resource == null)
             {
                 return NotFound();
             }
-            else
-            {
-                Resource = resource;
-            }
+
+            // order bookings by start time
+            Resource.Bookings = Resource.Bookings
+                .OrderBy(b => b.StartTime)
+                .ToList();
+
             return Page();
         }
     }

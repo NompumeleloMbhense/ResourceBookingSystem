@@ -43,6 +43,40 @@
         </dd>
     </dl>
 </div>
+
+<h4>Bookings for this Resource</h4>
+<hr />
+
+@if (Model.Resource.Bookings == null || !Model.Resource.Bookings.Any())
+{
+    <p><em>No bookings for this resource.</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Booked By</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in Model.Resource.Bookings)
+            {
+                <tr>
+                    <td>@booking.StartTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@booking.EndTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@booking.BookedBy</td>
+                    <td>@booking.Purpose</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Resource.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
