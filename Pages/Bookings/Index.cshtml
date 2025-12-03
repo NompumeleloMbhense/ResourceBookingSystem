@@ -2,59 +2,43 @@
 @model ResourceBookingSystem.Pages.Bookings.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Bookings";
 }
 
-<h1>Index</h1>
+<h1 class="mb-4">All Bookings</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<div class="mb-3">
+    <a asp-page="Create" class="btn btn-primary px-4">Add New Booking</a>
+</div>
+
+<table class="table table-striped table-bordered align-middle">
+    <thead class="table-light">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].Resource)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].StartTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].EndTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].BookedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].Purpose)
-            </th>
-            <th></th>
+            <th>Resource</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Booked By</th>
+            <th>Purpose</th>
+            <th style="width: 180px;">Actions</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model.Booking) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Resource.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Purpose)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Booking)
+        {
+            <tr>
+                <td>@item.Resource?.Name</td>
+                <td>@item.StartTime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.EndTime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@item.BookedBy</td>
+                <td>@item.Purpose</td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning me-1">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-info me-1">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

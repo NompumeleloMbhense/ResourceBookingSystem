@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">ResourceBookingSystem</a>
+                <a class="navbar-brand fw-bold" asp-area="" asp-page="/Index">Resource Booking System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,31 +20,32 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark px-3" asp-page="/Index">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Resources/Index">View Resources</a>
+                            <a class="nav-link text-dark px-3" asp-page="/Resources/Index">View Resources</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Resources/Create">Add Resource</a>
+                            <a class="nav-link text-dark px-3" asp-page="/Resources/Create">Add Resource</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Bookings/Index">View Bookings</a>
+                            <a class="nav-link text-dark px-3" asp-page="/Bookings/Index">View Bookings</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Bookings/Create">Add Booking</a>
+                            <a class="nav-link text-dark px-3" asp-page="/Bookings/Create">Add Booking</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-4 pt-3">
             @RenderBody()
         </main>
     </div>

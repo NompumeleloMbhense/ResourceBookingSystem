@@ -2,48 +2,40 @@
 @model ResourceBookingSystem.Pages.Bookings.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Booking Details";
 }
 
-<h1>Details</h1>
+<h1 class="mb-4">Booking Details</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h4 class="card-title">Booking Information</h4>
+        <hr />
+
+        <dl class="row mt-3">
+            <dt class="col-sm-3">Resource</dt>
+            <dd class="col-sm-9">@Model.Booking.Resource?.Name</dd>
+
+            <dt class="col-sm-3">Start Time</dt>
+            <dd class="col-sm-9">
+                @Model.Booking.StartTime.ToString("yyyy-MM-dd HH:mm")
+            </dd>
+
+            <dt class="col-sm-3">End Time</dt>
+            <dd class="col-sm-9">
+                @Model.Booking.EndTime.ToString("yyyy-MM-dd HH:mm")
+            </dd>
+
+            <dt class="col-sm-3">Booked By</dt>
+            <dd class="col-sm-9">@Model.Booking.BookedBy</dd>
+
+            <dt class="col-sm-3">Purpose</dt>
+            <dd class="col-sm-9">@Model.Booking.Purpose</dd>
+        </dl>
+    </div>
+</div>
 
 <div>
-    <h4>Booking</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.Resource)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.Resource.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.StartTime)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.StartTime)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.EndTime)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.EndTime)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.BookedBy)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.BookedBy)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Booking.Purpose)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.Purpose)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Booking.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Booking.Id" class="btn btn-warning me-2">Edit</a>
+    <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
 </div>
