@@ -254,3 +254,4 @@ C:\Users\nsmbh\Projects\ResourceBookingSystem\bin\Debug\net8.0\runtimes\win\lib\
 C:\Users\nsmbh\Projects\ResourceBookingSystem\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\nsmbh\Projects\ResourceBookingSystem\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\nsmbh\Projects\ResourceBookingSystem\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\nsmbh\Projects\ResourceBookingSystem\obj\Debug\net8.0\ResourceBookingSystem.sourcelink.json
