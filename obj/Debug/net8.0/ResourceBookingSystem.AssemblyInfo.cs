@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ResourceBookingSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+859303943aec117982d343fedfbedb00d803e0b7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4f62a2b1d6f5e7e25f59673df8c59d7eee52484")]
 [assembly: System.Reflection.AssemblyProductAttribute("ResourceBookingSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ResourceBookingSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
