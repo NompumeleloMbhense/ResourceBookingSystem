@@ -1,25 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ResourceBookingSystem.Data;
 using ResourceBookingSystem.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ResourceBookingSystem.Pages.Bookings
 {
+
+    /// <summary>
+    /// Handles creation of new bookings. Includes full validation,
+    /// conflict detection and safe database saving with error handling.
+    /// </summary>
+
     public class CreateModel : PageModel
     {
-        private readonly ResourceBookingSystem.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<CreateModel> _logger;
 
-        public CreateModel(ResourceBookingSystem.Data.ApplicationDbContext context)
+        public CreateModel(ApplicationDbContext context, ILogger<CreateModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
+
+        // Loads list of resources when the Create Booking form is opened
         public IActionResult OnGet()
         {
             ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name");
@@ -29,11 +40,12 @@ namespace ResourceBookingSystem.Pages.Bookings
         [BindProperty]
         public Booking Booking { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+
+        // Handles booking submission: validates fields, checks for conflicts,
+        // and saves using a database transaction.
         public async Task<IActionResult> OnPostAsync()
         {
-            // Ensure the model passed validation (required fields, types, etc.)
-
+            // Model validation (required fields, correct types)
             if (!ModelState.IsValid)
             {
                 // Reload resource list for the dropdown if validation fails
@@ -42,41 +54,56 @@ namespace ResourceBookingSystem.Pages.Bookings
             }
 
 
-            // --------------------------------------------------------
-            // Check for booking conflicts 
-            // --------------------------------------------------------
 
-            var existingBookings = await _context.Bookings
-                .Where(b => b.ResourceId == Booking.ResourceId)
-                .ToListAsync();
+            // Booking conflict validation
+            // Prevent overlapping bookings for the same resource.
+            var conflictExists = await _context.Bookings
+                .AnyAsync(b => b.ResourceId == Booking.ResourceId &&
+                    (
+                        (Booking.StartTime >= b.StartTime && Booking.StartTime < b.EndTime) ||
+                        (Booking.EndTime > b.StartTime && Booking.EndTime <= b.EndTime) ||
+                        (Booking.StartTime <= b.StartTime && Booking.EndTime >= b.EndTime)
+                    )
+                );
 
-            // Checking if the new booking overlaps with any existing booking
-            bool conflict = existingBookings.Any(b =>
-                (Booking.StartTime >= b.StartTime && Booking.StartTime < b.EndTime) ||
-                (Booking.EndTime > b.StartTime && Booking.EndTime <= b.EndTime) ||
-                (Booking.StartTime <= b.StartTime && Booking.EndTime >= b.EndTime)
-            );
-
-            // 
-            if (conflict)
+            if (conflictExists)
             {
-                // Add an error to the ModelState so it displays on the Razor Page
-                ModelState.AddModelError(string.Empty, "This resource is already booked during the selected time range.");
+                ModelState.AddModelError(string.Empty,
+                    "This resource is already booked during the selected time range.");
 
-                // Reload resource name for dropdown
                 ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name");
                 return Page();
             }
 
-            // -------------------------------------------------
-            // NO CONFLICT SO CREATE BOOKING
-            //--------------------------------------------------
 
+            // Save booking inside a safe DB transaction
+            using var transaction = await _context.Database.BeginTransactionAsync();
 
-            _context.Bookings.Add(Booking);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Bookings.Add(Booking);
+                await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+                await transaction.CommitAsync();
+
+                _logger.LogInformation("Booking created successfully. BookingId={BookingId}, ResourceId={ResourceId}",
+                    Booking.Id, Booking.ResourceId);
+
+                return RedirectToPage("./Index");
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+
+                _logger.LogError(ex,
+                    "Error while creating booking for ResourceId={ResourceId}", Booking.ResourceId);
+
+                ModelState.AddModelError(string.Empty,
+                    "An error occurred while saving the booking. Please try again.");
+
+                ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name");
+                return Page();
+            }
         }
     }
 }
