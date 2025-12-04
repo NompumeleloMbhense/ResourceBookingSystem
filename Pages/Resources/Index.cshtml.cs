@@ -10,20 +10,46 @@ using ResourceBookingSystem.Models;
 
 namespace ResourceBookingSystem.Pages.Resources
 {
+    /// <summary>
+    /// Displays a list of all resources stored in the system.
+    /// Includes logging and error handling for reliability.
+    /// </summary>
     public class IndexModel : PageModel
     {
-        private readonly ResourceBookingSystem.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ResourceBookingSystem.Data.ApplicationDbContext context)
+        public IndexModel(ApplicationDbContext context, ILogger<IndexModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
-        public IList<Resource> Resource { get;set; } = default!;
+  
+        // Holds the list of resources to be displayed on the Index page.
+        public IList<Resource> Resource { get; set; } = new List<Resource>();
 
-        public async Task OnGetAsync()
+        
+        // Loads all resources from the database when the page is accessed.
+        // Includes logging and safe error handling.
+        public async Task<IActionResult> OnGetAsync()
         {
-            Resource = await _context.Resources.ToListAsync();
+            try
+            {
+                Resource = await _context.Resources.ToListAsync();
+
+                _logger.LogInformation("Loaded {Count} resources for the Index page.", Resource.Count);
+
+                return Page();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error loading resources for the Index page.");
+
+                // Display a simple error message instead of crashing
+                ModelState.AddModelError(string.Empty, "An error occurred while loading resources.");
+                return Page();
+            }
         }
     }
 }
