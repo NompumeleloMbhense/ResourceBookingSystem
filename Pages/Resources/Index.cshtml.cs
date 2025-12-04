@@ -25,20 +25,37 @@ namespace ResourceBookingSystem.Pages.Resources
             _logger = logger;
         }
 
-  
+
         // Holds the list of resources to be displayed on the Index page.
         public IList<Resource> Resource { get; set; } = new List<Resource>();
 
-        
-        // Loads all resources from the database when the page is accessed.
-        // Includes logging and safe error handling.
+
+        // Holds the search term from the UI (supports ?SearchTerm=Meeting)
+        [BindProperty(SupportsGet = true)]
+        public string? SearchTerm { get; set; }
+
+        // Loads resources, applying a search filter if provided.
         public async Task<IActionResult> OnGetAsync()
         {
             try
             {
-                Resource = await _context.Resources.ToListAsync();
+                // Base query
+                var query = _context.Resources.AsQueryable();
 
-                _logger.LogInformation("Loaded {Count} resources for the Index page.", Resource.Count);
+                // Apply search filter if user entered a search term
+                if (!string.IsNullOrWhiteSpace(SearchTerm))
+                {
+                    query = query.Where(r =>
+                        r.Name.Contains(SearchTerm) ||
+                        r.Description.Contains(SearchTerm));
+                }
+
+                // Execute query
+                Resource = await query.ToListAsync();
+
+                _logger.LogInformation(
+                    "Loaded {Count} resources for the Index page. SearchTerm={SearchTerm}",
+                    Resource.Count, SearchTerm);
 
                 return Page();
             }
@@ -46,8 +63,9 @@ namespace ResourceBookingSystem.Pages.Resources
             {
                 _logger.LogError(ex, "Error loading resources for the Index page.");
 
-                // Display a simple error message instead of crashing
-                ModelState.AddModelError(string.Empty, "An error occurred while loading resources.");
+                ModelState.AddModelError(string.Empty,
+                    "An error occurred while loading resources.");
+
                 return Page();
             }
         }

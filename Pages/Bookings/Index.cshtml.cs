@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ResourceBookingSystem.Data;
@@ -10,8 +7,7 @@ using ResourceBookingSystem.Models;
 namespace ResourceBookingSystem.Pages.Bookings
 {
     /// <summary>
-    /// Displays a list of all bookings in the system.
-    /// Includes loading of related Resource data and full logging.
+    /// Displays all bookings and supports filtering by BookedBy name and date.
     /// </summary>
     public class IndexModel : PageModel
     {
@@ -24,36 +20,55 @@ namespace ResourceBookingSystem.Pages.Bookings
             _logger = logger;
         }
 
-        
-        // Holds all bookings to be displayed on the page.
-        // Includes related Resource information.
         public IList<Booking> Booking { get; set; } = new List<Booking>();
 
+        // The two filter inputs
+        [BindProperty(SupportsGet = true)]
+        public string? SearchName { get; set; }
 
-        
-        // Loads all bookings when the page is accessed (GET).
-        // Includes related Resource data using EF Core's Include method.
-        // Logs success or errors
-        public async Task OnGetAsync()
+        [BindProperty(SupportsGet = true)]
+        public DateTime? SearchDate { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
         {
             try
             {
-                _logger.LogInformation("Loading all bookings from database...");
+                // Begin query with Resource include
+                var query = _context.Bookings
+                    .Include(b => b.Resource)
+                    .AsQueryable();
 
-                Booking = await _context.Bookings
-                    .Include(b => b.Resource) // Load associated resource (name, etc.)
-                    .OrderBy(b => b.StartTime) // Order by date
+                // Filter by name
+                if (!string.IsNullOrWhiteSpace(SearchName))
+                {
+                    query = query.Where(b =>
+                        b.BookedBy!.ToLower().Contains(SearchName.ToLower()));
+                }
+
+                // Filter by date (matches any booking where the selected day falls between Start & End)
+                if (SearchDate.HasValue)
+                {
+                    var selectedDate = SearchDate.Value.Date;
+
+                    query = query.Where(b =>
+                        b.StartTime.Date <= selectedDate &&
+                        b.EndTime.Date >= selectedDate);
+                }
+
+                Booking = await query
+                    .OrderBy(b => b.StartTime)
                     .ToListAsync();
 
-                _logger.LogInformation("Successfully loaded {Count} bookings.", Booking.Count);
+                _logger.LogInformation("Loaded {Count} bookings with filters. Name={SearchName}, Date={SearchDate}",
+                    Booking.Count, SearchName, SearchDate);
+
+                return Page();
             }
             catch (Exception ex)
             {
-                // Log unexpected issues (DB unavailable, connection issues, etc.)
-                _logger.LogError(ex, "Error loading bookings from database.");
-
-                // Prevents null reference in UI
-                Booking = new List<Booking>();
+                _logger.LogError(ex, "Error loading filtered bookings.");
+                ModelState.AddModelError(string.Empty, "An error occurred while loading bookings.");
+                return Page();
             }
         }
     }
