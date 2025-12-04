@@ -1,10 +1,24 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5">
+
+    <h1 class="display-5 fw-bold mb-3">Internal Resource Booking System</h1>
+    <p class="lead text-muted mb-4">
+        A simple and efficient system to manage shared company resources and prevent double-bookings.
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a asp-page="/Resources/Index" class="btn btn-primary btn-lg px-4">
+            View Resources
+        </a>
+
+        <a asp-page="/Bookings/Index" class="btn btn-outline-primary btn-lg px-4">
+            View Bookings
+        </a>
+    </div>
+
 </div>
