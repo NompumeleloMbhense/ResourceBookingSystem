@@ -51,8 +51,7 @@ namespace ResourceBookingSystem.Pages.Bookings
                     var selectedDate = SearchDate.Value.Date;
 
                     query = query.Where(b =>
-                        b.StartTime.Date <= selectedDate &&
-                        b.EndTime.Date >= selectedDate);
+                        b.StartTime.Date == selectedDate);
                 }
 
                 Booking = await query

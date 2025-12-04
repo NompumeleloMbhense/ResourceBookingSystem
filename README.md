@@ -84,8 +84,8 @@ TrustServerCertificate=True;
 
 ## Screenshots
 
-- Screenshots are included in the `/Screenshots` folder in the final assessment ZIP 
-(as required by the submission instructions).
+- `/Screenshots` – screenshots of the running system and database
+- `/Database/ResourceBookingDb.bak` – full database backup
 
 ---
 
