@@ -66,6 +66,7 @@ namespace ResourceBookingSystem.Pages.Resources
             // Mark the entity as modified so EF Core updates it
             _context.Attach(Resource).State = EntityState.Modified;
 
+            // Attempt to save changes with concurrency handling
             try
             {
                 // Attempt to save changes
@@ -77,7 +78,7 @@ namespace ResourceBookingSystem.Pages.Resources
 
                 return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException ex)
+            catch (DbUpdateConcurrencyException ex) // Handle concurrency issues
             {
                 // Resource was deleted between the GET and POST
                 if (!ResourceExists(Resource.Id))

@@ -39,18 +39,20 @@ namespace ResourceBookingSystem.Pages.Bookings
                 return NotFound();
             }
 
+            // Attempt to load the booking including its associated resource
             try
             {
                 Booking? booking = await _context.Bookings
                     .Include(b => b.Resource)
                     .FirstOrDefaultAsync(m => m.Id == id);
-
+                // Check if booking was found, else return a 404 response 
                 if (booking == null)
                 {
                     _logger.LogWarning("Booking not found for delete. BookingId={BookingId}", id);
                     return NotFound();
                 }
 
+                
                 Booking = booking;
 
                 _logger.LogInformation("Loaded booking for deletion. BookingId={BookingId}", id);
@@ -68,12 +70,14 @@ namespace ResourceBookingSystem.Pages.Bookings
         // Handles deletion of the booking after confirmation.
         public async Task<IActionResult> OnPostAsync(int? id)
         {
+            // Validate the booking ID, return 404 if null
             if (id == null)
             {
                 _logger.LogWarning("Delete POST called with null booking ID.");
                 return NotFound();
             }
 
+            // Attempt to find and delete the booking
             try
             {
                 Booking? booking = await _context.Bookings.FindAsync(id);
@@ -84,6 +88,8 @@ namespace ResourceBookingSystem.Pages.Bookings
                     return NotFound();
                 }
 
+                // Remove the booking from the database, save changes, log success
+                // and redirect to the bookings index page
                 _context.Bookings.Remove(booking);
                 await _context.SaveChangesAsync();
 
@@ -91,7 +97,7 @@ namespace ResourceBookingSystem.Pages.Bookings
 
                 return RedirectToPage("./Index");
             }
-            catch (Exception ex)
+            catch (Exception ex) // Catch any unexpected errors during deletion 
             {
                 _logger.LogError(ex, "Unexpected error occurred while deleting booking. BookingId={BookingId}", id);
                 return StatusCode(500, "An unexpected error occurred while deleting the booking.");

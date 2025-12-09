@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Elfie.Serialization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace ResourceBookingSystem.Pages.Bookings
                 return NotFound();
             }
 
+            // Attempt to load the booking including its associated resource
             Booking? booking = await _context.Bookings
                 .Include(b => b.Resource)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -111,15 +113,16 @@ namespace ResourceBookingSystem.Pages.Bookings
 
             // --------------------------------------------------------------------
             // UPDATE BOOKING
+            // Saves changes with error handling for concurrency issues 
             // --------------------------------------------------------------------
             try
             {
-                _context.Attach(Booking).State = EntityState.Modified;
+                _context.Attach(Booking).State = EntityState.Modified; // Mark entity as modified
                 await _context.SaveChangesAsync();
 
                 _logger.LogInformation("Booking updated successfully. BookingId={BookingId}", Booking.Id);
             }
-            catch (DbUpdateConcurrencyException ex)
+            catch (DbUpdateConcurrencyException ex) // Handle concurrency issues, like simultaneous edits
             {
                 if (!BookingExists(Booking.Id))
                 {
@@ -132,7 +135,7 @@ namespace ResourceBookingSystem.Pages.Bookings
 
                 throw; // throw to avoid hiding a real concurrency issue
             }
-            catch (Exception ex)
+            catch (Exception ex) // Catch all other unexpected errors 
             {
                 _logger.LogError(ex,
                     "Unexpected error while updating BookingId={BookingId}", Booking.Id);
@@ -147,6 +150,7 @@ namespace ResourceBookingSystem.Pages.Bookings
             return RedirectToPage("./Index");
         }
 
+        // Checks if a booking exists by ID.
         private bool BookingExists(int id)
         {
             return _context.Bookings.Any(e => e.Id == id);

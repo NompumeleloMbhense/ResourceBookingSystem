@@ -3,8 +3,12 @@
 
 namespace ResourceBookingSystem.Models
 {
+    /// <summary>
+    /// Represents a resource that can be booked
+    /// </summary>
     public class Resource
     {
+        // Primary key of the Resource
         public int Id { get; set; }
 
         // Name is required so users know what they are booking
@@ -27,7 +31,9 @@ namespace ResourceBookingSystem.Models
         // A resource is available unless marked otherwise
         public bool IsAvailable { get; set; } = true;
 
-        // Navigation property
+        // Navigation property for bookings
+        // A Resource can have multiple bookings
+        // Creates a relationship between Resource and Booking
         public List<Booking> Bookings { get; set; } = new();
     }
 }

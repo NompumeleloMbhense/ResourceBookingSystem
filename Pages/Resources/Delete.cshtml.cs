@@ -71,6 +71,7 @@ namespace ResourceBookingSystem.Pages.Resources
                 return NotFound();
             }
 
+            // Attempt to find and delete the resource from the database
             try
             {
                 var resourceToDelete = await _context.Resources.FindAsync(id);
@@ -86,7 +87,7 @@ namespace ResourceBookingSystem.Pages.Resources
 
                 _logger.LogInformation("Resource deleted successfully. ResourceId={ResourceId}", id);
             }
-            catch (Exception ex)
+            catch (Exception ex) // Catch any unexpected errors during deletion
             {
                 _logger.LogError(ex, "Error deleting resource. ResourceId={ResourceId}", id);
                 ModelState.AddModelError(string.Empty, "An error occurred while deleting the resource.");

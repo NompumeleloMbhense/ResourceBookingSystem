@@ -18,9 +18,11 @@ namespace ResourceBookingSystem.Pages.Bookings
     /// </summary>
     public class CreateModel : PageModel
     {
+        // Dependency injection of the database context and logger
         private readonly ApplicationDbContext _context;
         private readonly ILogger<CreateModel> _logger;
 
+        // Constructor to initialize dependencies
         public CreateModel(ApplicationDbContext context, ILogger<CreateModel> logger)
         {
             _context = context;
@@ -34,16 +36,15 @@ namespace ResourceBookingSystem.Pages.Bookings
 
 
         
-        /// Loads the Create Booking page.
-        /// Preloads the Resource dropdown list
+        // Loads the Create Booking page.
+        // Preloads the Resource dropdown list
         public IActionResult OnGet()
         {
             _logger.LogInformation("Displaying Create Booking page.");
 
-            ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name");
+            ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name"); // Load resourcs for dropdown
             return Page();
         }
-
 
         
         // Handles form submission:
@@ -57,7 +58,7 @@ namespace ResourceBookingSystem.Pages.Bookings
             if (!ModelState.IsValid)
             {
                 _logger.LogWarning("Booking creation failed validation.");
-                ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name");
+                ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name"); // Reload resources for dropdown
                 return Page();
             }
 
@@ -68,6 +69,7 @@ namespace ResourceBookingSystem.Pages.Bookings
 
             // --------------------------------------------------------------
             // CHECK FOR TIME CONFLICTS
+            // This ensures no overlapping bookings for the same resource.
             // --------------------------------------------------------------
             var conflictExists = await _context.Bookings.AnyAsync(b =>
                 b.ResourceId == Booking.ResourceId &&
@@ -94,6 +96,10 @@ namespace ResourceBookingSystem.Pages.Bookings
             // --------------------------------------------------------------
             // SAVE BOOKING WITH TRANSACTION
             // --------------------------------------------------------------
+
+            // Begin a transaction to ensure the booking 
+            // is only saved if all operations succeed. 
+            // If anything fails, we roll back to maintain data integrity.
             using var transaction = await _context.Database.BeginTransactionAsync();
 
             try
@@ -111,7 +117,8 @@ namespace ResourceBookingSystem.Pages.Bookings
             }
             catch (Exception ex)
             {
-                // Rollback to avoid corrupting the database
+                // Rollback to avoid corrupting the database if something goes wrong
+                // and log the error for troubleshooting
                 await transaction.RollbackAsync();
 
                 _logger.LogError(
@@ -122,7 +129,7 @@ namespace ResourceBookingSystem.Pages.Bookings
                 ModelState.AddModelError(string.Empty,
                     "An error occurred while saving the booking. Please try again.");
 
-                ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name");
+                ViewData["ResourceId"] = new SelectList(_context.Resources, "Id", "Name"); // Reload resources for dropdown
                 return Page();
             }
         }

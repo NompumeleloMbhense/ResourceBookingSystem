@@ -1,12 +1,217 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\pages\\resources\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:pages\\resources\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\pages\\resources\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:pages\\resources\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\pages\\bookings\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:pages\\bookings\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\pages\\bookings\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:pages\\bookings\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\pages\\bookings\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:pages\\bookings\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\pages\\bookings\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:pages\\bookings\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\pages\\dashboard.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:pages\\dashboard.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\pages\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:pages\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\models\\resource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:models\\resource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|c:\\users\\nsmbh\\projects\\resourcebookingsystem\\models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F6C12A3-4493-49A7-B742-4F225B71BADF}|ResourceBookingSystem.csproj|solutionrelative:models\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T18:33:50.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Edit.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Resources\\Edit.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Resources\\Edit.cshtml.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Resources\\Edit.cshtml.cs",
+              "RelativeToolTip": "Pages\\Resources\\Edit.cshtml.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAkwFAAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T18:31:21.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Delete.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Resources\\Delete.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Resources\\Delete.cshtml.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Resources\\Delete.cshtml.cs",
+              "RelativeToolTip": "Pages\\Resources\\Delete.cshtml.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAkwFsAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T18:28:11.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Edit.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Bookings\\Edit.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Bookings\\Edit.cshtml.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Bookings\\Edit.cshtml.cs",
+              "RelativeToolTip": "Pages\\Bookings\\Edit.cshtml.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAkwJUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T18:14:11.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Details.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Bookings\\Details.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Bookings\\Details.cshtml.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Bookings\\Details.cshtml.cs",
+              "RelativeToolTip": "Pages\\Bookings\\Details.cshtml.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAgwCkAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T18:13:11.81Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Delete.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Bookings\\Delete.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Bookings\\Delete.cshtml.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Bookings\\Delete.cshtml.cs",
+              "RelativeToolTip": "Pages\\Bookings\\Delete.cshtml.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAkwGMAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T18:06:19.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Bookings\\Create.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Bookings\\Create.cshtml.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Bookings\\Create.cshtml.cs",
+              "RelativeToolTip": "Pages\\Bookings\\Create.cshtml.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAzwC4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T17:25:59.122Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Dashboard.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Dashboard.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Dashboard.cshtml.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Dashboard.cshtml.cs",
+              "RelativeToolTip": "Pages\\Dashboard.cshtml.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwBkAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T17:15:50.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Pages\\Dashboard.cshtml",
+              "RelativeToolTip": "Pages\\Dashboard.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-09T17:14:57.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T16:57:37.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Resource.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Models\\Resource.cs",
+              "RelativeDocumentMoniker": "Models\\Resource.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Models\\Resource.cs",
+              "RelativeToolTip": "Models\\Resource.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-09T16:52:23.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Models\\Booking.cs",
+              "RelativeDocumentMoniker": "Models\\Booking.cs",
+              "ToolTip": "C:\\Users\\nsmbh\\Projects\\ResourceBookingSystem\\Models\\Booking.cs",
+              "RelativeToolTip": "Models\\Booking.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAwwD4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T17:25:57.234Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

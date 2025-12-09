@@ -3,11 +3,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ResourceBookingSystem.Models
 {
+
+    /// <summary>
+    /// Represents a booking made for a resource.
+    /// </summary>
     public class Booking :IValidatableObject
     {
-        public int Id { get; set; }
+        // Primary Key of the Booking
+        public int Id { get; set; } 
 
         // Foreign Key
+        // Links a booking to a specific resource
         [Display(Name = "Resource")]
         [Required(ErrorMessage = "Please select a resource.")]
         public int ResourceId { get; set; }
@@ -36,14 +42,16 @@ namespace ResourceBookingSystem.Models
         [StringLength(200, ErrorMessage = "Purpose cannot exceed 200 characters.")]
         public string Purpose { get; set; } = string.Empty;
 
-        public Resource? Resource { get; set; }
+        // Navigation property for resource 
+        // Creates a relationship between Booking and Resource
+        public Resource? Resource { get; set; } 
 
         // ----------------------------------------------------
         // Custom Validation: EndTime must be after StartTime
         // To ensure EndTime is strictly greater than StartTime.
         // ----------------------------------------------------
 
-
+        // Implementing IValidateObject for custom validation
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (EndTime <= StartTime)
@@ -53,7 +61,5 @@ namespace ResourceBookingSystem.Models
                     new[] { nameof(EndTime) });
             }
         }
-
-
     }
 }

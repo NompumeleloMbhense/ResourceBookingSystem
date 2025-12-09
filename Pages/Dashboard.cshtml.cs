@@ -4,6 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using ResourceBookingSystem.Data;
 using ResourceBookingSystem.Models;
 
+///<summary>
+/// Dashboard page model to display today's and upcoming bookings.
+/// depends on ApplicationDbContext to fetch booking data from the database.
+///</summary>
+
 namespace ResourceBookingSystem.Pages
 {
     public class DashboardModel : PageModel

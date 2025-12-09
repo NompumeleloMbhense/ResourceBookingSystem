@@ -39,6 +39,7 @@ namespace ResourceBookingSystem.Pages.Bookings
                 return NotFound();
             }
 
+            // Attempt to load the booking including its associated resource
             try
             {
                 Booking? booking = await _context.Bookings
